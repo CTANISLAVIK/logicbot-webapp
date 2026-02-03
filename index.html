@@ -75,6 +75,13 @@
             action: "start_task"
         }));
     }
+
+    function exitToBot() {
+        tg.sendData(JSON.stringify({
+            action: "start_task"
+        }));
+        tg.close();
+    }
 </script>
 
 </body>
