@@ -132,11 +132,9 @@ button.main.pulse {
     tg.ready();
 
     function startLocalTask() {
-        const start = document.getElementById("startScreen");
-        const task = document.getElementById("taskScreen");
-
-        start.style.display = "none";
-        task.style.display = "block";
+        tg.sendData(JSON.stringify({
+            action: "get_task"
+        }));
     }
 </script>
 
