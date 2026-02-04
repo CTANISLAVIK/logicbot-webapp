@@ -78,6 +78,25 @@ button.secondary {
         transform: translateY(0);
     }
 }
+.card.flash {
+    animation: flash 0.35s ease;
+}
+
+@keyframes flash {
+    0%   { background: #ffffff; }
+    50%  { background: #eef2ff; }
+    100% { background: #ffffff; }
+}
+
+button.main.pulse {
+    animation: pulse 0.35s ease;
+}
+
+@keyframes pulse {
+    0%   { transform: scale(1); }
+    50%  { transform: scale(0.96); }
+    100% { transform: scale(1); }
+}
 
     </style>
 </head>
@@ -102,11 +121,20 @@ button.secondary {
     tg.ready();
 
     function startLocalTask() {
-        if (tg.HapticFeedback) {
-            tg.HapticFeedback.impactOccurred("medium");
-        }
+    const card = document.querySelector('.card');
+    const btn = document.querySelector('button.main');
 
-        console.log("Начало задания");
+    card.classList.add('flash');
+    btn.classList.add('pulse');
+
+    setTimeout(() => {
+        card.classList.remove('flash');
+        btn.classList.remove('pulse');
+    }, 350);
+
+    console.log("Начало задания");
+}
+
     }
     function exitToBot() { tg.sendData(JSON.stringify({ action: "start_task" })); tg.close(); }
 </script>
