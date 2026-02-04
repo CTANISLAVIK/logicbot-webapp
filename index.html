@@ -132,17 +132,18 @@ button.main.pulse {
     tg.ready();
 
     function startLocalTask() {
-    const start = document.getElementById("startScreen");
-    const task = document.getElementById("taskScreen");
+        const start = document.getElementById("startScreen");
+        const task = document.getElementById("taskScreen");
 
-    start.style.display = "none";
-    task.style.display = "block";
-}
-
+        start.style.display = "none";
+        task.style.display = "block";
     }
-    function exitToBot() { tg.sendData(JSON.stringify({ action: "start_task" })); tg.close(); }
-</script>
 
+    function exitToBot() {
+        tg.sendData(JSON.stringify({ action: "start_task" }));
+        tg.close();
+    }
+</script>
 
 </body>
 </html>
