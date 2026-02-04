@@ -102,16 +102,11 @@ button.secondary {
     tg.ready();
 
     function startLocalTask() {
-        // пока просто заглушка
-        // позже тут будут задания
-        console.log("Начало задания");
-    }
+        if (tg.HapticFeedback) {
+            tg.HapticFeedback.impactOccurred("medium");
+        }
 
-    function exitToBot() {
-        tg.sendData(JSON.stringify({
-            action: "start_task"
-        }));
-        tg.close();
+        console.log("Начало задания");
     }
 </script>
 
