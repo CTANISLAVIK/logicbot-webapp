@@ -136,23 +136,15 @@ button.main.pulse {
             action: "get_task"
         }));
     }
-</script>
+<script>
+const tg = window.Telegram.WebApp;
+tg.ready();
 
-    const tg = window.Telegram.WebApp;
-    tg.ready();
-
-    function startLocalTask() {
-        const start = document.getElementById("startScreen");
-        const task = document.getElementById("taskScreen");
-
-        start.style.display = "none";
-        task.style.display = "block";
-    }
-
-    function exitToBot() {
-        tg.sendData(JSON.stringify({ action: "start_task" }));
-        tg.close();
-    }
+function startLocalTask() {
+    tg.sendData(JSON.stringify({
+        action: "get_task"
+    }));
+}
 </script>
 
 </body>
