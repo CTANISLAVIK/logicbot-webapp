@@ -48,6 +48,22 @@
         button:active {
             background: #3a58d6;
         }
+        button.main {
+    background: #4a6cf7;
+    box-shadow: 0 6px 0 #3a58d6;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+button.main:active {
+    transform: translateY(4px);
+    box-shadow: 0 2px 0 #3a58d6;
+}
+
+button.secondary {
+    background: #e9ecff;
+    color: #1f2937;
+}
+
     </style>
 </head>
 <body>
@@ -56,9 +72,14 @@
     <h1>🧠 LogicBot</h1>
     <p>Интерактивный интерфейс LogicBot</p>
 
-    <button onclick="sendAction()">
-        Начать задание
-    </button>
+    <button class="main" onclick="startLocalTask()">
+    Начать задание
+</button>
+
+<button class="secondary" onclick="exitToBot()">
+    ⬅ Выйти в бот
+</button>
+
 
     <button onclick="exitToBot()" style="background:#e0e3f7;color:#333;">
         ⬅ Выйти в бот
@@ -70,10 +91,10 @@
     const tg = window.Telegram.WebApp;
     tg.ready();
 
-    function sendAction() {
-        tg.sendData(JSON.stringify({
-            action: "start_task"
-        }));
+    function startLocalTask() {
+        // пока просто заглушка
+        // позже тут будут задания
+        console.log("Начало задания");
     }
 
     function exitToBot() {
@@ -83,6 +104,7 @@
         tg.close();
     }
 </script>
+
 
 </body>
 </html>
