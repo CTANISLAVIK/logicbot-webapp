@@ -98,30 +98,6 @@ button.main.pulse {
     50%  { transform: scale(0.96); }
     100% { transform: scale(1); }
 }
-.exit-btn {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-
-    width: 36px;
-    height: 36px;
-
-    border-radius: 50%;
-    border: none;
-
-    background: #eef2ff;
-    color: #4a6cf7;
-    font-size: 18px;
-
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.exit-btn:active {
-    transform: scale(0.9);
-}
 
     </style>
 </head>
@@ -129,16 +105,24 @@ button.main.pulse {
 
 <div class="card">
 
-    <button class="exit-btn" onclick="exitToBot()" title="Выйти в бот">
-        🚪
-    </button>
-
+    <!-- ЭКРАН СТАРТА -->
+<div id="startScreen">
     <h1>🧠 LogicBot</h1>
     <p>Интерактивный интерфейс LogicBot</p>
 
     <button class="main" onclick="startLocalTask()">
         Начать задание
     </button>
+</div>
+
+<!-- ЭКРАН ЗАДАНИЯ -->
+<div id="taskScreen" style="display:none;">
+    <h1>🎯 Задание</h1>
+    <p id="taskText">Сколько будет 2 + 2 ?</p>
+
+    <button class="main">4</button>
+    <button class="secondary">3</button>
+    <button class="secondary">5</button>
 
 </div>
 
@@ -148,18 +132,11 @@ button.main.pulse {
     tg.ready();
 
     function startLocalTask() {
-    const card = document.querySelector('.card');
-    const btn = document.querySelector('button.main');
+    const start = document.getElementById("startScreen");
+    const task = document.getElementById("taskScreen");
 
-    card.classList.add('flash');
-    btn.classList.add('pulse');
-
-    setTimeout(() => {
-        card.classList.remove('flash');
-        btn.classList.remove('pulse');
-    }, 350);
-
-    console.log("Начало задания");
+    start.style.display = "none";
+    task.style.display = "block";
 }
 
     }
