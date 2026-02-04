@@ -108,6 +108,7 @@ button.secondary {
 
         console.log("Начало задания");
     }
+    function exitToBot() { tg.sendData(JSON.stringify({ action: "start_task" })); tg.close(); }
 </script>
 
 
